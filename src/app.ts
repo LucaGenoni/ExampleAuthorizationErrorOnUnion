@@ -21,7 +21,7 @@ const typeDefs = `#graphql
       { operations: [CREATE, UPDATE, DELETE], requireAuthentication:true, where: { jwt: { roles_INCLUDES: "admin" } }, when: "BEFORE" }
     ]) {
         title: String!
-        myUnion: AuthorUnion! @relationship(type: "HAS_UNION", direction: OUT)
+        myUnion: AuthorUnion! @relationship(type: "HAS_UNION", direction: IN)
     }
 
     type PostNoUnion @authorization(validate: [
