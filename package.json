@@ -1,0 +1,23 @@
+{
+  "name": "example-authorization-error-on-union",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "type": "module",
+  "license": "MIT",
+  "description": "test neo4j",
+  "author": "Luca Genoni",
+  "dependencies": {
+    "@apollo/server": "^4.9.5",
+    "@neo4j/graphql": "^4.4.3",
+    "@types/node": "^20.10.1",
+    "graphql": "^16.8.1",
+    "neo4j-driver": "^5.15.0",
+    "typescript": "^5.3.2"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1"
+  },
+  "scripts": {
+    "test": "yarn tsc && node dist/app.js"
+  }
+}
