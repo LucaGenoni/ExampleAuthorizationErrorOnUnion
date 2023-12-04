@@ -22,8 +22,15 @@ const typeDefs = `#graphql
         title: String!
         first: Author! @relationship(type: "HAS_UNION", direction: OUT)
     }
+    # type PostWithUnionError @authorization(validate: [
+    #   { operations: [CREATE, UPDATE, DELETE], requireAuthentication:true, where: { node: { myUnion: { Author: { username: "$jwt.username" }}} }, when: "BEFORE" }
+    # ]) {
+    #     title: String!
+    #     myUnion: AuthorUnion! @relationship(type: "HAS_UNION", direction: OUT)
+    # }
+
     type PostWithUnion @authorization(validate: [
-      { operations: [CREATE, UPDATE, DELETE], requireAuthentication:true, where: { node: { myUnion: { Author: { username: "$jwt.username" }}} }, when: "BEFORE" }
+      { operations: [CREATE, UPDATE, DELETE], requireAuthentication:true, where: { node: { myUnionConnection: { Author: { node: {username: "$jwt.username" }}}} }, when: "BEFORE" }
     ]) {
         title: String!
         myUnion: AuthorUnion! @relationship(type: "HAS_UNION", direction: OUT)
